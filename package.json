@@ -1,0 +1,27 @@
+{
+  "name": "opencv-node",
+  "version": "1.0.0",
+  "description": "node opencv face detection",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jermorin/opencv-node.git"
+  },
+  "keywords": [
+    "opencv",
+    "face",
+    "detection"
+  ],
+  "author": "Jermorin Llaine Jcouraud",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jermorin/opencv-node/issues"
+  },
+  "homepage": "https://github.com/Jermorin/opencv-node#readme",
+  "devDependencies": {
+    "electron-prebuilt": "^0.36.0"
+  }
+}
