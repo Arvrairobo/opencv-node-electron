@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-  </body>
+    <title>opencv-node-electron</title>
+</head>
+<body>
+<canvas id="canvas-video" width="640" height="480"></canvas>
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script>
+    // MODIFY THIS TO THE APPROPRIATE URL IF IT IS NOT BEING RUN LOCALLY
+    var socket = io.connect('http://localhost:3000');
+
+    var canvas = document.getElementById('canvas-video');
+    var context = canvas.getContext('2d');
+    var img = new Image();
+
+    // show loading notice
+    context.fillStyle = '#333';
+    context.fillText('Loading...', canvas.width / 2 - 30, canvas.height / 3);
+
+    socket.on('frame', function (data) {
+        var uint8Arr = new Uint8Array(data.buffer);
+        var str = String.fromCharCode.apply(null, uint8Arr);
+        var base64String = btoa(str);
+
+        img.onload = function () {
+            context.drawImage(this, 0, 0, canvas.width, canvas.height);
+        };
+        img.src = 'data:image/png;base64,' + base64String;
+    });
+</script>
+</body>
+
 </html>
