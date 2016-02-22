@@ -1,8 +1,6 @@
-var cv = require('opencv');
+var camera = require('./camera');
 
 // camera properties
-var camWidth = 500;
-var camHeight = 300;
 var camFps = 10;
 var camInterval = 1000 / camFps;
 
@@ -12,11 +10,6 @@ var rectColorEyes = [0, 0, 255];
 var rectThicknessFace = 2;
 var rectThicknessEyes = 1;
 
-// initialize camera
-var camera = new cv.VideoCapture(0);
-
-camera.setWidth(camWidth);
-camera.setHeight(camHeight);
 
 function detectFace(im, cb) {
     im.detectObject('./node_modules/opencv/data/haarcascade_frontalface_alt.xml', {}, function (err, faces) {

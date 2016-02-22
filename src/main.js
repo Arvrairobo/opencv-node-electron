@@ -4,6 +4,7 @@ const express = require('express');
 const http = require('http');
 const electron = require('electron');
 const Menu = require('menu');
+const emotions = require('./emotions');
 
 // Module to control application life.
 const app = electron.app;
@@ -37,8 +38,9 @@ function createWindow() {
                 {
                     label: 'Detect emotion',
                     selector: 'getEmotion:',
-                    click: function(){
-                        console.log('getEmotion')
+                    click: function () {
+                        console.log('getEmotion');
+                        emotions();
                     }
                 }, {
                     label: 'Quit', accelerator: 'CmdOrCtrl+Q',
