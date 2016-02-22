@@ -3,6 +3,7 @@
 const express = require('express');
 const http = require('http');
 const electron = require('electron');
+const Menu = require('menu');
 
 // Module to control application life.
 const app = electron.app;
@@ -13,8 +14,8 @@ const BrowserWindow = electron.BrowserWindow;
 // be closed automatically when the JavaScript object is garbage collected.
 var mainWindow;
 
-function createServer(){
-    var app = express();
+function createServer() {
+    const app = express();
 
     var server = http.createServer(app);
 
@@ -29,6 +30,27 @@ function createServer(){
 }
 
 function createWindow() {
+    var menu = Menu.buildFromTemplate([
+        {
+            label: 'Menu',
+            submenu: [
+                {
+                    label: 'Detect emotion',
+                    selector: 'getEmotion:',
+                    click: function(){
+                        console.log('getEmotion')
+                    }
+                }, {
+                    label: 'Quit', accelerator: 'CmdOrCtrl+Q',
+                    click: function () {
+                        app.quit();
+                    }
+                }
+            ]
+        }]);
+
+    Menu.setApplicationMenu(menu);
+
     // Create the browser window.
     mainWindow = new BrowserWindow({width: 800, height: 600});
 
