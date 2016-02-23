@@ -1,7 +1,9 @@
 var cv = require('opencv');
 
-var camWidth = 480;
-var camHeight = 300;
+var ratioCompress = 2;
+var camWidth = 1080/ratioCompress;
+var camHeight = 720/ratioCompress;
+
 // initialize camera
 var camera = new cv.VideoCapture(0);
 
