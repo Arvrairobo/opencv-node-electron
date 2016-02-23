@@ -19,3 +19,14 @@
 - [electron](http://electron.atom.io/)
 - [opencv](https://github.com/peterbraden/node-opencv)
 - [socket.io](https://www.npmjs.com/package/socket.io)
+
+##todo
+
+- [x] use opencv
+- [x] detect faces and eyes
+- [x] use socket to emmit on front
+- [ ] move to es6 syntax
+- [ ] promises in detection and emotions
+- [ ] if not to use Express, remove and replace with a single server dedicated to the socket
+- [ ] use redux react for front
+- [ ] consult the history of emotions snapshot
