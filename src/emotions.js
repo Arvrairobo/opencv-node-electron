@@ -1,18 +1,18 @@
-var oxfordEmotion = require('node-oxford-emotion')('xx');
+var oxford = require('project-oxford'),
+    client = new oxford.Client('945199da3c6e46d7b0d88e0875046f4e');
 var camera = require('./camera');
-var fs = require('fs');
 
-function binaryRead(file) {
-    var bitmap = fs.readFileSync(file);
-    return new Buffer(bitmap.toString('binary'),'binary');
-}
-
-module.exports = function () {
+module.exports = function (socket) {
+    console.log('> get emotions');
     camera.read(function (err, im) {
         im.save('snapshot.png');
+        console.log('snapshot.png');
 
-        oxfordEmotion.recognize("image", binaryRead('snapshot.png'), function(cb) {
-            console.log(cb);
+        client.emotion.analyzeEmotion({
+            path: 'snapshot.png'
+        }).then(function (response) {
+            socket.emit('emotions', response);
+            console.log('> emmit emotions');
         });
     });
 };
