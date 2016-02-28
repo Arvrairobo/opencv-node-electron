@@ -25,6 +25,7 @@
 - [x] use opencv
 - [x] detect faces and eyes
 - [x] use socket to emmit on front
+- [ ] use [vision cloud api](https://github.com/Jermorin/vision-cloud-api) (?)
 - [ ] move to es6 syntax
 - [ ] promises in detection and emotions
 - [ ] if not to use Express, remove and replace with a single server dedicated to the socket
