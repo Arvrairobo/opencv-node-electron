@@ -1,13 +1,14 @@
-var oxford = require('project-oxford'),
-    client = new oxford.Client('945199da3c6e46d7b0d88e0875046f4e');
-var camera = require('./camera');
+import oxford from 'project-oxford';
+import key from './../private/api';
+import Camera from './../util/camera';
 
-module.exports = function (socket) {
+const client = new oxford.Client(key);
+
+export default function (socket) {
     console.log('> get emotions');
-    camera.read(function (err, im) {
+    Camera.read(function (err, im) {
         im.save('snapshot.png');
         console.log('snapshot.png');
-
         client.emotion.analyzeEmotion({
             path: 'snapshot.png'
         }).then(function (response) {
