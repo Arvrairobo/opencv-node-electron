@@ -56,8 +56,7 @@ export default function (socket) {
         Camera.read((err, im) => {
             if (err) throw err;
             detectFace(im)
-                .then(imWithFace => detectEyes(imWithFace)
-                .then(imFinal => socket.emit('frame', {buffer: imFinal.toBuffer()})));
+                .then(imWithFace => socket.emit('frame', {buffer: imWithFace.toBuffer()}));
         });
     }, camInterval);
 }
