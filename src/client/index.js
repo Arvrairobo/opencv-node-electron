@@ -9,7 +9,7 @@ const img = new Image();
 context.fillStyle = '#333';
 context.fillText('Loading...', canvas.width / 2, canvas.height / 3);
 
-socket.on('frame', (data) => {
+socket.on('frame', data => {
     const uint8Arr = new Uint8Array(data.buffer);
     const str = String.fromCharCode.apply(null, uint8Arr);
     const base64String = btoa(str);
@@ -17,5 +17,5 @@ socket.on('frame', (data) => {
     img.src = 'data:image/png;base64,' + base64String;
 });
 
-var emotions = document.getElementById('emotions');
+const emotions = document.getElementById('emotions');
 socket.on('emotions',data => emotions.innerHTML = JSON.stringify(data));
