@@ -1,4 +1,5 @@
 #node-opencv
+**Deprecated** : See new projects :[server](https://github.com/Jermorin/opencv-server-socket) - [client](https://github.com/Jermorin/opencv-react-electron)
 
 [![Build Status](https://travis-ci.org/Jermorin/opencv-node.svg?branch=master)](https://travis-ci.org/Jermorin/opencv-node)
 [![Code Climate](https://codeclimate.com/github/Jermorin/opencv-node-electron/badges/gpa.svg)](https://codeclimate.com/github/Jermorin/opencv-node-electron)
@@ -22,6 +23,7 @@
 - [socket.io](https://www.npmjs.com/package/socket.io)
 
 ##todo
+**Deprecated** : See new projects :[server](https://github.com/Jermorin/opencv-server-socket) - [client](https://github.com/Jermorin/opencv-react-electron)
 
 - [x] use opencv
 - [x] detect faces and eyes
